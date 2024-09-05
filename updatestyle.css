@@ -1,0 +1,28 @@
+body{
+    background-image: url(q.jpg);
+}
+h6{
+    font-size: 15px;
+}
+button{
+    border-radius: 5px;
+}
+#allusers{
+        height: 26px;
+        width: 100%;
+        background-color: blue;
+        padding-top: 4px;
+}
+#alluser-link{
+    background-color:white;
+    color: black;
+    margin-left: 20px;
+}
+.font{
+    font-size: 18px;
+    color: white;
+}
+  #updateuser{
+      margin-left:25%;
+      
+  }

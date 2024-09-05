@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
+body{
+    background-image: url(q.jpg);
+}
+
+header{
+    width: 100%;
+
+    border: 3px solid rgb(129, 79, 221);
+    background-color: blue;
+    border-radius: 4px;
+    height: 15px;
+    padding: 8px;
+    
+}
+  #link-home{
+          background-color:cornsilk;
+          padding: 2px;
+
+  }
+    .hide{
+                display: none;
+    }
+header ul{
+    text-align: center;
+}
+header ul li{
+    margin: auto;
+    list-style: none;
+    display: inline-block;
+}
+header ul li a{
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.13);
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.719);
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 10px;
+    transition: all ease 0.5s;
+}
+header ul li a:hover{
+    background-color: #211b4385;
+}
+
+h5{
+    font-family: 'Ubuntu', sans-serif;
+    color: rgba(0, 0, 0, 0.753);
+    letter-spacing: 1.5px;
+}
+
+.newUser{
+    padding: 10px;
+    background:#dfdfdf9d;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 40px;
+    padding-bottom: 30px;
+}
+
+form{
+    padding-top: 10px;
+    padding-bottom: 30px;
+    margin: 0 auto;
+    width: 500px;
+    height: auto;
+}
+
+.formGroup{
+    padding-bottom: 20px;
+}
+
+.text-light{
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.719);
+    font-family: 'Raleway', sans-serif;
+}
+
+.status-lebel{
+    margin-left: 200px;
+    font-size:14px;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: rgba(0, 0, 0, 0.671);
+}
+
+.radio{
+    padding-bottom: 10px;
+}
+.radio-label{
+    margin-left:201px;
+   text-align:center;
+   letter-spacing:2px;
+   font-size:12px;
+   font-family: 'Ubuntu', sans-serif;
+   color: rgba(0, 0, 0, 0.671);
+
+}
+.details{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+input {
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 30px;
+    padding-left: 15px;
+    background-color:rgba(253, 253, 253, 0.753);
+  }
+textarea{
+    border: none;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-top: 7px;
+    background-color:rgba(253, 253, 253, 0.753);
+}
+
+input[name="phone"]{
+    margin-bottom: 10px;
+}
+
+.submittingButton{
+    margin-top: 10px;
+    background-color: rgba(59, 97, 107, 0.322);
+    height: 30px;
+    width: 80px;
+    border-radius: 5px;
+    display: flex;
+    margin: auto;
+    padding-left: 4%;
+    padding-top:1.4%;
+    text-align: center;
+    text-transform: uppercase;
+}

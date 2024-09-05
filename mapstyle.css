@@ -1,0 +1,33 @@
+.back{
+        background-color: rgb(12, 206, 206);
+        width: 100%;
+        height: 30px;
+        padding-top: 8px;
+}
+
+#home-map{
+            background-color: white;
+            padding: 4px;
+            margin-left: 40px;
+            
+            border: 2px solid tomato;
+           
+}
+h2{
+    text-align: auto;
+}
+h3{
+    display: none;
+}
+
+
+
+#map{
+    border: 3px solid blue;
+    width: 700px;
+    height:500px;
+}
+
+body{
+    background-color: rgb(210, 235, 245);
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>   
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/adduserstyle.css">
+      
+            <!-- linking the map start -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <!-- linking the map  end-->
+
+    <title>Add Homeless</title>
+</head>
+<body>
+  <!-- __________________________________________________________________  -->
+   <!-- .__________________________________________________________________  -->
+  <!-- html codes starts here  -->
+  <!-- __________________________________________________________________  -->
+       <header>
+         <span id="home"><a href="/" id=link-home>Home</a></span>    
+       </header>
+    <form action="/api/users" method="POST" id="adduser">
+         <div class="newUser">
+               <div class="formGroup" id="name">
+                     <input type="hidden" name="id" value="">
+                     <h5 class="name-heading">Name of the Homeless : </h5>
+                     <input type="text" name="name" value="" placeholder="Type name here">
+
+               </div>
+                      <div class="formGroup" id="address">
+                        <h5 class="address-heading">Current Address of the Homeless : </h5>
+                        <input type="text" name="email" value="" placeholder="Type address here">
+                      </div>
+                      <div class="form-group">
+                        <label for="status" class="status-lebel">Status</label>
+                        <div class="status-button" id="active">
+                            <input type="radio" id="radio-1" name="status" value="Active" >
+                            <label for="radio-1" class="radio-label">Active</label>
+                        </div>
+                        <div class="status-button" id="inactive">
+                            <input type="radio" id="radio-2" name="status" value="Inactive" >
+                            <label for="radio-2" class="radio-label">Inactive</label>
+                        </div>
+                      </div>  
+                        <div class="phone">
+                          <h5 class="phone-heading">Your Phone Number : </h5>
+                          <input type="number" name="phone" value="" placeholder="type your phone number">
+                        </div>
+                        <input type="text" name="ngoName" value="" placeholder="Type NGO name here" class="hide" id="ngoName">
+                          <div class="details">
+                                <textarea name="details" class="hide" id="textArea" cols="30" rows="4" placeholder="Enter details of the place to settled"></textarea>
+                          </div>
+
+                          <input type="hidden" name="lng" value="" id="lng"> 
+                          <input type="hidden" name="lat" value="" id="lat">
+
+                                <!-- this is for map  dont add css for this code-->
+                                <!-- __________________________________________________________________  -->
+                          <div id='map' style='width: 400px; height: 300px;'></div>
+                             <!-- __________________________________________________________________  -->
+
+                    
+                       <button type="submit" class="submittingButton">save</button>>
+         </div>
+
+    </form>
+                 
+               <!-- __________________________________________________________________  -->
+               <!-- html code ends here  -->
+               <!-- __________________________________________________________________  -->
+                <!-- __________________________________________________________________      -->
+                    <!-- javascript for map starts here -->
+                    <!-- __________________________________________________________________  -->
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtYW5uYXlhIiwiYSI6ImNrdHpjdHU0aDJ6ZTUydm5xdWpwcjVldnAifQ.Apyd6yaB1MEL4m_ScotdwA';
+    
+         const lng= document.getElementById('lng');
+         const lat= document.getElementById('lat');
+                //  var globalInitialLat = 26.1445 ;
+                //  var globalInitialLng = 91.7362;
+            navigator.geolocation.getCurrentPosition(successLocation, errorLocation,{ enableHighAccuracy:true});
+                 function successLocation(position){
+                       var initialLng= position.coords.longitude;
+                        var initialLat = position.coords.latitude;
+                     console.log(initialLng)
+                     console.log(initialLat)
+
+                    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [initialLng,initialLat],
+        zoom: 9
+      });
+    
+        // Create a new marker.
+    const marker = new mapboxgl.Marker({
+draggable: true
+})
+        .setLngLat([initialLng,initialLat])
+        .addTo(map);
+
+        function onDragEnd() {
+const lngLat = marker.getLngLat();
+
+       
+        lng.value= lngLat.lng;
+        lat.value=lngLat.lat;
+}
+ 
+marker.on('dragend', onDragEnd);
+                    
+                 };
+                   
+
+                 function errorLocation(err){
+                               alert("please allow to get the location");
+                 }
+
+// ___________________________________________________________________________________ 
+// ____________________________________________________________________________________ 
+
+//       var map = new mapboxgl.Map({
+//         container: 'map',
+//         style: 'mapbox://styles/mapbox/streets-v11',
+//         center: [globalInitialLng,globalInitialLat],
+//         zoom: 9
+//       });
+    
+//         // Create a new marker.
+//     const marker = new mapboxgl.Marker({
+// draggable: true
+// })
+//         .setLngLat([globalInitialLng,globalInitialLat])
+//         .addTo(map);
+
+//         function onDragEnd() {
+// const lngLat = marker.getLngLat();
+
+       
+//         lng.value= lngLat.lng;
+//         lat.value=lngLat.lat;
+// }
+ 
+// marker.on('dragend', onDragEnd);
+
+    </script>
+
+    <!-- __________________________________________________________________  -->
+    <!-- javascript for map ends here  -->
+    <!-- __________________________________________________________________  -->
+    <!-- __________________________________________________________________ -->
+       <!-- jquery starts here  -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+          $("#adduser").submit(function(event){
+    alert("Data Inserted Successfully!");
+    
+})
+    </script>
+    <!-- __________________________________________________________________  -->
+    <!-- jquery ends here  -->
+</body>
+</html>

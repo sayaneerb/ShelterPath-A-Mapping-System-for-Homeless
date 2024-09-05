@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+body{
+    background-image: url(q.jpg);
+    /* text-align: center; */
+}
+header{
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.13);;
+    margin-bottom: 18px;
+
+}
+header a{
+    width: 575px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.13);
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.719);
+    font-size: 20px;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 10px;
+    transition: all ease 0.5s;
+}
+header a:hover{
+    background-color: #211b4385;
+}
+  
+.img{
+    /* margin-top: 10px; */
+    margin-left: 10px;
+    margin-right: 10px;
+    /* height: 200px; */
+    margin-bottom: 5px;
+    margin-left: 25%;
+}
+  
+img{
+    width: 190px;
+    height: 190px;
+}
+.nameField{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.829);
+    margin-bottom: 5px;
+}
+.addressField{
+    font-family: 'Ubuntu', sans-serif;
+    color: rgba(255, 255, 255, 0.829);
+    font-size: 15px;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+.location{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.helped-by{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+}
+button{
+    height: 28px;
+    width: 117px;
+    border-radius: 5px;
+    /* border: none; */
+    /* border: 5px rgb(10, 33, 48) solid; */
+    transition-duration: 0.4s;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+  
+button:hover {
+    background-color: rgb(73, 204, 204); /* Green */
+    color: white;
+  }
+
+button a{
+    color: rgb(10, 33, 48);
+    font-weight: bold;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+    text-transform: capitalize;
+}

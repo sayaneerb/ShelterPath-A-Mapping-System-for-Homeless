@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <link rel="stylesheet" href="/css/updatestyle.css">
+
+    <!-- __________________________________________________________________  -->
+         <!-- linking the map  -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+      <!-- __________________________________________________________________  -->
+
+    <title>Help a Homeless</title>
+</head>
+<body>
+      <!-- __________________________________________________________________ 
+    ______________________________________________________________________________
+                html code starts here -->
+    <header id="allusers">
+        <a href="/" id="alluser-link">See All</a>
+  </header>
+    <form method="POST" id="updateuser">
+         <div class="newUser">
+               <div class="formGroup" id="name-updated">
+                     <input type="hidden" name="id" value="<%=user._id%>">
+                     <div class="name-heading-updated font">Name of the Homeless : </div>
+                     <input type="text" name="name" value="<%=user.name%>" placeholder="Type name here">
+
+               </div>
+                      <div class="formGroup" id="address-updated">
+                        <div class="address-heading-updated font">Current Address of the Homeless : </div>
+                        <input type="text" name="email" value="<%=user.email%>" placeholder="Type address here">
+                      </div>
+                      <div class="form-group">
+                        <label for="status" class="status-lebel">Status</label>
+                        <div class="status-button" id="active-updated">
+                            <input type="radio" id="radio-3" name="status" value="Active" <%= user.status == 'Active' ? 'checked' : '' %> >
+                            <label for="radio-3" class="radio-label">Active</label>
+                        </div>
+                        <div class="status-button" id="inactive-updated">
+                            <input type="radio" id="radio-4" name="status" value="Inactive" <%= user.status == 'Inactive' ? 'checked' : '' %> >
+                            <label for="radio-4" class="radio-label">Inactive</label>
+                        </div>
+                    </div>
+
+                    <div class="phone">
+                        <div class="phone-heading-updated font">NGO Phone Number : </div>
+                        <input type="number" name="phone" value="<%=user.phone%>" placeholder="type your phone number"></div>
+                          <div class="form-group">
+                              <div class="ngoName-heading font">NGO Name</div>
+                        <input type="text" name="ngoName" value="<%=user.ngoName%>" placeholder="Type NGO name here" id="ngoName-updated">
+                    </div>
+                    <div class="details">
+                        <h6 class="details-updated font">enter the details about the current place where the homeless is settled</h6>
+                        <textarea name="details" id="textArea-updated" cols="30" rows="4" placeholder="Enter details of the place to settled"></textarea>
+                  </div>
+
+                  <input type="hidden" name="lng" value="<%=user.lng%>" id="lng"> 
+                  <input type="hidden" name="lat" value="<%=user.lat%>" id="lat">
+
+                  <div id='map' style='width: 400px; height: 300px;'></div>
+
+         </div>
+         <div class="form-group">
+          <button type="submit" class="btn text-dark update">Save</button>
+      </div>
+
+    </form>
+
+    <!-- __________________________________________________________________
+             html code ends here
+      _________________________________________________________________________  -->
+<!-- __________________________________________________________________  -->
+      <!-- javscript code starting point  -->
+      <!-- __________________________________________________________________ 
+    ___________________________________________________________________________________ -->
+             <!-- for maps  -->
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtYW5uYXlhIiwiYSI6ImNrdHpjdHU0aDJ6ZTUydm5xdWpwcjVldnAifQ.Apyd6yaB1MEL4m_ScotdwA';
+      
+           const lng= document.getElementById('lng').value;
+           const lat= document.getElementById('lat').value;
+  
+
+      
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: [lng, lat],
+          zoom:8
+        });
+      
+          // Create a new marker.
+      const marker = new mapboxgl.Marker({
+  draggable: true
+  })
+          .setLngLat([lng, lat])
+          .addTo(map);
+  
+          function onDragEnd() {
+  const lngLat = marker.getLngLat();
+  // coordinates.style.display = 'block';
+  // coordinates.innerHTML = `Longitude: ${lngLat.lng}<br />Latitude: ${lngLat.lat}`;
+         
+          lng.value= lngLat.lng;
+          lat.value=lngLat.lat;
+  }
+   
+  marker.on('dragend', onDragEnd);
+  
+      </script>
+       <!-- maps part ending 
+    ______________________________________________________________________________________ -->
+                  
+    <!-- __________________________________________________________________  -->
+         <!-- jquery and ajax 
+        ___________________________________________________________________ -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      $("#updateuser").submit(function(event){
+    event.preventDefault();
+
+    var unindexed_array = $(this).serializeArray();
+    var data = {}
+
+    $.map(unindexed_array, function(n, i){
+        data[n['name']] = n['value']
+    })
+
+
+    var request = {
+        "url" : `http://localhost:4000/api/users/${data.id}`,
+        "method" : "PUT",
+        "data" : data
+    }
+
+    $.ajax(request).done(function(response){
+        alert("Thank you for helping a needy!");
+    })
+        
+
+})
+    </script>
+</body>
+</html>

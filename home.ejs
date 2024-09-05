@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/homestyle.css"> 
+    
+    <title>ASHROY:Home</title>
+
+</head>
+         <!-- <style>
+             .img{
+                   margin-right: 10px;
+             }
+              .container {
+                  /* width: 700px; */
+                  background-color: rgb(173, 115, 28);
+              }
+         </style> -->
+<body>
+    <header class="navigate">
+        <a  class="link" href="/addUser">Add Homeless</a>
+</header>
+      <div class="mainContainer">
+      
+          <div class='container'>
+            <%for(var i=0;i<users.length;i++){%>
+        <div class="img" style="float: left;"><img src="/img/hyperdrive.jpg" alt="<p>photo here</p>" width="100px" height="100px"></div>
+        <div class="nameField">Name : <%=users[i].name%>
+        </div>
+        <div class="addressField">Address: <%=users[i].email%>
+        </div>
+        <!-- this is just for test purpose  -->
+        <input type="hidden" name="test" id="test" value="<%=users[i].name%>">
+          <!-- test ends here  -->
+
+        <div class="status"><%= users[i].status %></div>
+          
+                  <div class="helped-by">Helped By : <span class="span-helped"><%=users[i].ngoName%></span></div> 
+                 
+        <div class="location" id="loc"><button><a href="/location?id=<%=users[i]._id%>">location</a></button></div>
+        <div class="help"><button><a href="/update?id=<%=users[i]._id%>">help</a></button></div>
+          <!-- __________________________________________________________________ 
+                  this br is necessary.... why Idk...else the element is shown like stairs . dont touch this -->
+        <div class="test"><br><br><br></div>
+        <!-- __________________________________________________________________  -->
+        <%}%>
+        <!-- ejs code ends here  -->
+        
+    </div>
+    
+</div>
+           <!-- these are some testing stuff ... dont bother about them  -->
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+              <script>
+//                    if ($('#span-helped').is(':empty')){
+//   //do something
+//   $("#helped-by").hide();
+// } 
+               
+              </script>
+     
+           <!-- __________________________________________________________________  -->
+         
+          
+</body>
+
+</html>

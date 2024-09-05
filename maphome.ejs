@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <link rel="stylesheet" href="/css/mapstyle.css">
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+    <title>location</title>
+</head>
+
+<body>
+    <header class="back">
+        <a href="/" id="home-map">Home</a>
+  </header>
+    <h2 id="address-map">Address :<%=user.email%></h2>
+       <h3 id="lng"><%=user.lng%></h3>
+       <h3 id="lat"><%=user.lat%></h3>
+<div class="map">
+    <div id='map'></div>
+  </div>
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1Ijoic2FtYW5uYXlhIiwiYSI6ImNrdHpjdHU0aDJ6ZTUydm5xdWpwcjVldnAifQ.Apyd6yaB1MEL4m_ScotdwA';
+ 
+         const lng =document.getElementById('lng').innerHTML;
+         const lat =document.getElementById('lat').innerHTML;
+
+ 
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [lng, lat],
+    zoom: 8
+  });
+
+    // Create a new marker.
+const marker = new mapboxgl.Marker()
+    .setLngLat([lng, lat])
+    .addTo(map);
+</script>
+                                              
+
+  
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPage</title>
+    <script src="https://kit.fontawesome.com/030967a45b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+     <header class="navigate">
+                <a  class="link" href="/addUser">Add users</a>
+     </header>
+  
+  <form action="/" method="POST">
+    <table class="table">
+        
+         <thead class="table head">
+             <tr>
+               <th>sl no.</th>
+               <th>name</th>
+               <th>email</th>
+               <th>action</th>
+             </tr>
+         </thead>
+           <tbody>
+                    <%for(var i=0;i<users.length;i++){%>
+               <tr>
+                  <td><%=i+1%></td>
+                  <td><%=users[i].name%></td>
+                  <td><%=users[i].email%></td>
+                  <td>
+                      <a href="/update?id=<%=users[i]._id%>" class="button">
+                            <span class="update"><i class="fas fa-edit"></i> </span>
+                      </a>
+                      <a  class="button">
+                        <span class="delete"> <i class="fas fa-trash"></i> </span>
+                  </a>
+
+                  </td>
+               </tr>
+                 <%}%>
+           </tbody>
+
+    </table>
+      
+  </form>
+        
+</body>
+</html>
